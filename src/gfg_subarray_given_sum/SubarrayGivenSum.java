@@ -48,6 +48,14 @@ in:
 out:
 38 42
 
+in:
+1
+74 665
+142 112 54 69 148 45 63 158 38 60 124 142 130 179 117 36 191 43 89 107 41 143 65 49 47 6 91 130 171 151 7 102 194 149 30 24 85 155 157 41 167 177 132 109 145 40 27 124 138 139 119 83 130 142 34 116 40 59 105 131 178 107 74 187 22 146 125 73 71 30 178 174 98 113
+
+out: 
+-1
+
 Explanation : 
 In first test case, sum of elements from 2nd position to 4th position is 12
 In second test case, sum of elements from 1st position to 5th position is 15
@@ -73,42 +81,26 @@ public class SubarrayGivenSum {
 			for(int i=0; i<n; i++) {
 				arr[i] = sc.nextInt();
 			}
-			//System.out.println("llegit: "+ t +" "+n+" "+sumResult+" "+arr[0]+" "+arr[n-1]);
 			
 			for(int i=0; i<n; i++) {		
-												
+				sum += arr[i];		
 				if(sum == sumResult) {
-					rightIndex++;
+					rightIndex = i+1;
 					System.out.println(leftIndex+1 + " " + rightIndex);
 					break;
-				}else if (sum > sumResult) {
-					
+				}else if (sum > sumResult) {					
 					while(sum > sumResult) {
 						sum -= arr[leftIndex];
 						leftIndex++;
-					}
-					
+					}					
 					if(sum == sumResult) {
-						rightIndex++;
+						rightIndex = i+1;
 						System.out.println(leftIndex+1 + " " + rightIndex);
-						break;
-						
-					}else if(sum < sumResult){
-						sum += arr[i];
-						rightIndex = i;
-
-						if(sum == sumResult) {
-							rightIndex++;
-							System.out.println(leftIndex+1 + " " + rightIndex);
-							break;
-						}
-						
-					}
-					
-				} else {
-					sum += arr[i];
-					rightIndex = i;
-					
+						break;						
+					}					
+				} 
+				if(i==n-1) {
+					System.out.println("-1");
 				}
 				
 			}
